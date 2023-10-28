@@ -73,27 +73,27 @@ export default function Register() {
                 pin: form.pin,
                 device_name: deviceName ? deviceName : "web",
             };
-            const { serverHost } = Api();
-            const response = await customFetch(
-                `${serverHost}/api/register`,
-                'POST',
-                JSON.stringify(params),
-            )
-            if (response.ok) {
-                let result = await response.text();
+            // const { serverHost } = Api();
+            // const response = await customFetch(
+            //     `${serverHost}/api/register`,
+            //     'POST',
+            //     JSON.stringify(params),
+            // )
+            // if (response.ok) {
+            //     let result = await response.text();
 
-                if (Platform.OS === 'web') {
-                    await AsyncStorage.setItem('sub-faster-token', result);
-                } else {
-                    SecureStore.setItemAsync('sub-faster-token', result);
-                }
-                router.replace('/login');
-            } else {
-                seterrorMsg('Something went wrong. Please try again.')
-            }
-            setregistering(false)
-        } else {
-            seterrorMsg('Some fields are still empty!')
+            //     if (Platform.OS === 'web') {
+            //         await AsyncStorage.setItem('sub-faster-token', result);
+            //     } else {
+            //         SecureStore.setItemAsync('sub-faster-token', result);
+            //     }
+            router.replace('/login');
+            //     } else {
+            //         seterrorMsg('Something went wrong. Please try again.')
+            //     }
+            //     setregistering(false)
+            // } else {
+            //     seterrorMsg('Some fields are still empty!')
         }
     }
 

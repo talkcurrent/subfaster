@@ -47,35 +47,35 @@ export default function Login() {
             try {
                 const deviceName = Device.deviceName ? Device.deviceName : Device.osName;
 
-                const { data } = await axios.post(
-                    `${serverHost}/api/login`,
-                    {
-                        phoneNumber: form.phoneNumber,
-                        password: form.password,
-                        device_name: deviceName
-                    }
-                );
+                // const { data } = await axios.post(
+                //     `${serverHost}/api/login`,
+                //     {
+                //         phoneNumber: form.phoneNumber,
+                //         password: form.password,
+                //         device_name: deviceName
+                //     }
+                // );
 
-                setproccessing(false);
-                let prevScreen;
-                if (Platform.OS === 'web') {
-                    await AsyncStorage.setItem('sub-faster-token', data);
-                    prevScreen = await AsyncStorage.getItem('sub-faster-prevPath');
-                } else {
-                    await SecureStore.setItemAsync('sub-faster-token', data);
-                    prevScreen = await SecureStore.getItemAsync('sub-faster-prevPath');
-                }
+                // setproccessing(false);
+                // let prevScreen;
+                // if (Platform.OS === 'web') {
+                //     await AsyncStorage.setItem('sub-faster-token', data);
+                //     prevScreen = await AsyncStorage.getItem('sub-faster-prevPath');
+                // } else {
+                //     await SecureStore.setItemAsync('sub-faster-token', data);
+                //     prevScreen = await SecureStore.getItemAsync('sub-faster-prevPath');
+                // }
 
-                if (prevScreen?.length) {
-                    router.replace(prevScreen);
-                } else {
-                    router.replace(`/auth`);
-                }
-                if (Platform.OS === 'web') {
-                    await AsyncStorage.removeItem('sub-faster-prevPath');
-                } else {
-                    await SecureStore.deleteItemAsync('sub-faster-prevPath');
-                }
+                // if (prevScreen?.length) {
+                //     router.replace(prevScreen);
+                // } else {
+                router.replace(`/auth`);
+                // }
+                // if (Platform.OS === 'web') {
+                //     await AsyncStorage.removeItem('sub-faster-prevPath');
+                // } else {
+                //     await SecureStore.deleteItemAsync('sub-faster-prevPath');
+                // }
 
             } catch (err) {
                 seterrorMsg(err.response.data.message);
