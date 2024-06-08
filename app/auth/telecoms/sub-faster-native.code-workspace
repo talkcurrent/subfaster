@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../back-end"
+		},
+		{
+			"path": "../../../../sub-faster-web"
+		}
+	],
+	"settings": {}
+}
